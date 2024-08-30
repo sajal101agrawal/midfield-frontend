@@ -107,19 +107,16 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
     app_name: string,
     new_name: string,
   ) {
-    setIsLoading(true);
-    setError(null);
     try {
       const res = await axios.post(
         'https://api.midfield.ai/api/app/update_apps/',
         { google_id, email, app_name, new_name },
       );
       setAppList(res.data.app_lists);
+      getAllApps(google_id, email);
     } catch (error) {
       console.log(error);
       setError('Failed to load App List, Please Reload!');
-    } finally {
-      setIsLoading(false);
     }
   }, []);
 

@@ -69,7 +69,7 @@ const Apps: React.FC = () => {
           </div>
         )}
 
-        {appList.length === 0 && !isLoading && !error && (
+        {appList?.length === 0 && !isLoading && !error && (
           <div className="border border-stroke rounded-lg h-32 bg-stroke/60 flex justify-center items-center ">
             <p className="text-black font-bold">
               You currently do not have an API key. Please create a new one.
@@ -77,7 +77,7 @@ const Apps: React.FC = () => {
           </div>
         )}
 
-        {appList.length > 0 && !isLoading && !error && (
+        {appList?.length > 0 && !isLoading && !error && (
           <TableThree appList={appList} />
         )}
       </div>

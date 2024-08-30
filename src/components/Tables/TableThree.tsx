@@ -10,7 +10,7 @@ const TableThree = (props: { appList: any }) => {
   const { userData } = useUser();
   const { updateAppName } = useCreateApp();
 
-  function handleEdit() {
+  function handleUpdate() {
     if (userData) {
       updateAppName(userData.sub, userData.email, app_name, new_name);
     }
@@ -67,6 +67,7 @@ const TableThree = (props: { appList: any }) => {
                       onClick={() => {
                         setIsEditOpen(true);
                         setApp_name(apps.app_name);
+                        setNew_name(apps.app_name);
                       }}
                     >
                       Edit
@@ -100,7 +101,7 @@ const TableThree = (props: { appList: any }) => {
                   <input
                     type="text"
                     id="app-name"
-                    value={app_name}
+                    value={new_name}
                     onChange={(e) => {
                       setNew_name(e.target.value);
                     }}
@@ -108,7 +109,10 @@ const TableThree = (props: { appList: any }) => {
                     placeholder="Enter your app name"
                   />
                   <div className="flex gap-2 items-center">
-                    <button className="text-white bg-meta-5 hover:bg-meta-5/90 font-semibold  shadow-md   transition-colors px-2 py-1 rounded-md">
+                    <button
+                      className="text-white bg-meta-5 hover:bg-meta-5/90 font-semibold  shadow-md   transition-colors px-2 py-1 rounded-md"
+                      onClick={handleUpdate}
+                    >
                       Submit
                     </button>
                     <button
