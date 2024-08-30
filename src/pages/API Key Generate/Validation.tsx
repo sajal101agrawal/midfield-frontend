@@ -127,7 +127,7 @@ const Validation: React.FC = () => {
             </p>
           ) : (
             <>
-              <div className=" py-4 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mx-2">
+              <div className=" py-4 grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mx-2">
                 {validators.map((validator) => (
                   <ValidatorEl
                     validator={validator}

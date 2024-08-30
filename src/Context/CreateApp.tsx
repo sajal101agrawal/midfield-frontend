@@ -117,6 +117,7 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
         'https://api.midfield.ai/api/app/update_apps/',
         { google_id, email, app_name, new_name },
       );
+      console.log(res.data);
       getAllApps(google_id, email);
     } catch (error) {
       console.log(error);
