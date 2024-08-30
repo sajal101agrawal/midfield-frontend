@@ -12,7 +12,9 @@ interface User {
   id: string;
   name: string;
   email: string;
-  // Add other properties as needed
+  picture: string;
+  sub: string;
+  //Add Another Properties as needed
 }
 
 interface UserContextValue {
@@ -20,6 +22,7 @@ interface UserContextValue {
   error: string | null;
   isAuthenticated: boolean;
   getUserData: (code: string) => void;
+  logOut: () => void;
 }
 
 const UserContext = createContext<UserContextValue | undefined>(undefined);
@@ -32,6 +35,7 @@ function UserProvider({ children }: UserProviderProps) {
   const [userData, setUserData] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [formValidators, setFormValidators] = useState<number[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,7 +44,6 @@ function UserProvider({ children }: UserProviderProps) {
     const user = localStorage.getItem('user-data');
 
     if (token && user) {
-      console.log(token && user);
       setIsAuthenticated(true);
       setUserData(JSON.parse(localStorage.getItem('user-data') || ''));
       navigate('/dashboard');
@@ -67,16 +70,24 @@ function UserProvider({ children }: UserProviderProps) {
         // Redirect to the dashboard page
         navigate('/dashboard');
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.error('Authentication Error:', error.response || error.message);
         setError('Failed to authenticate. Please try again.');
         // navigate('/auth/signin');
       });
   };
 
+  const logOut = async () => {
+    localStorage.removeItem('auth-token');
+    localStorage.removeItem('user-data');
+    setIsAuthenticated(false);
+    setUserData(null);
+    navigate('/auth/signin');
+  };
+
   return (
     <UserContext.Provider
-      value={{ userData, error, getUserData, isAuthenticated }}
+      value={{ userData, error, getUserData, isAuthenticated, logOut }}
     >
       {children}
     </UserContext.Provider>

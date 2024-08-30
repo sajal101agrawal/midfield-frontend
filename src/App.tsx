@@ -17,6 +17,8 @@ import Alerts from './pages/UiElements/Alerts';
 import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
 import AuthReceiver from './pages/Authentication/AuthReceiver';
+import CreateApp from './pages/API Key Generate/Apps';
+import Validation from './pages/API Key Generate/Validation';
 
 function App() {
   const { pathname } = useLocation();
@@ -24,6 +26,8 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  // <Navigate to={'/auth/signin'} />
 
   return (
     <Routes>
@@ -68,7 +72,9 @@ function App() {
             </>
           }
         />
-        <Route
+        <Route path="apps" element={<CreateApp />} />
+        <Route path="apps/create_new_app" element={<Validation />} />
+        {/* <Route
           path="calendar"
           element={
             <>
@@ -148,7 +154,7 @@ function App() {
               <Buttons />
             </>
           }
-        />
+        /> */}
       </Route>
     </Routes>
   );

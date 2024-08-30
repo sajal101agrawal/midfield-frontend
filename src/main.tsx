@@ -7,12 +7,18 @@ import './css/satoshi.css';
 import 'jsvectormap/dist/css/jsvectormap.css';
 import 'flatpickr/dist/flatpickr.min.css';
 import { UserProvider } from './Context/UserContext';
+import { CreateAppProvider } from './Context/CreateApp';
+import { ValidatorsProvider } from './Context/ValidatorsContext';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Router>
       <UserProvider>
-        <App />
+        <CreateAppProvider>
+          <ValidatorsProvider>
+            <App />
+          </ValidatorsProvider>
+        </CreateAppProvider>
       </UserProvider>
     </Router>
   </React.StrictMode>,
