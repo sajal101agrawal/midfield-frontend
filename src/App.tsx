@@ -52,7 +52,7 @@ function App() {
             </>
           }
         />
-        <Route
+        {/* <Route
           path="/auth/signup"
           element={
             <>
@@ -60,7 +60,7 @@ function App() {
               <SignUp />
             </>
           }
-        />
+        /> */}
       </Route>
       <Route path="/dashboard" element={<DefaultLayout />}>
         <Route
@@ -72,8 +72,24 @@ function App() {
             </>
           }
         />
-        <Route path="apps" element={<CreateApp />} />
-        <Route path="apps/create_new_app" element={<Validation />} />
+        <Route
+          path="apps"
+          element={
+            <>
+              <PageTitle title="Apps" />
+              <CreateApp />
+            </>
+          }
+        />
+        <Route
+          path="apps/create_new_app"
+          element={
+            <>
+              <PageTitle title="Create New App" />
+              <Validation />
+            </>
+          }
+        />
         {/* <Route
           path="calendar"
           element={

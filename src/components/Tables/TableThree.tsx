@@ -8,7 +8,7 @@ const TableThree = (props: { appList: any }) => {
   const [app_name, setApp_name] = useState('');
   const [new_name, setNew_name] = useState('');
   const { userData } = useUser();
-  const { updateAppName } = useCreateApp();
+  const { updateAppName, deleteApp } = useCreateApp();
 
   function handleUpdate() {
     if (userData) {
@@ -73,7 +73,18 @@ const TableThree = (props: { appList: any }) => {
                       Edit
                     </button>
 
-                    <button className="text-white bg-meta-1  shadow-md    transition-colors px-2 py-1 rounded-md">
+                    <button
+                      className="text-white bg-meta-1  shadow-md    transition-colors px-2 py-1 rounded-md"
+                      onClick={() => {
+                        if (userData) {
+                          deleteApp(
+                            userData.sub,
+                            userData.email,
+                            apps.app_name,
+                          );
+                        }
+                      }}
+                    >
                       Delete
                     </button>
                   </div>

@@ -20,7 +20,7 @@ const Apps: React.FC = () => {
       <div className="w-full min-h-[100vh] mx-auto bg-white p-4">
         <div className="mb-10">
           <div className="flex justify-between items-center mb-2">
-            <h1 className="text-2xl font-bold  text-black">Create App</h1>
+            <h1 className="text-2xl font-bold  text-black">Your Apps</h1>
             <Link
               to="create_new_app"
               className={`text-white bg-boxdark border shadow-md  border-graydark  transition-colors px-2 py-1 rounded-md `}

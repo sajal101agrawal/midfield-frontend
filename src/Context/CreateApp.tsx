@@ -33,6 +33,11 @@ interface CreateAppContextValue {
     app_name: string,
     new_name: string,
   ) => Promise<void>;
+  deleteApp: (
+    google_id: string,
+    email: string,
+    app_name: string,
+  ) => Promise<void>;
 }
 
 const CreateAppContext = createContext<CreateAppContextValue | undefined>(
@@ -112,11 +117,29 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
         'https://api.midfield.ai/api/app/update_apps/',
         { google_id, email, app_name, new_name },
       );
-      setAppList(res.data.app_lists);
       getAllApps(google_id, email);
     } catch (error) {
       console.log(error);
-      setError('Failed to load App List, Please Reload!');
+      // setError('Failed to Update App Name, Try Again!');
+    }
+  }, []);
+
+  const deleteApp = useCallback(async function deleteApp(
+    google_id: string,
+    email: string,
+    app_name: string,
+  ) {
+    try {
+      const res = await axios.delete(
+        'https://api.midfield.ai/api/app/delete_apps/',
+        //@ts-ignore
+        { google_id, email, app_name },
+      );
+      console.log(res.data);
+      getAllApps(google_id, email);
+    } catch (error) {
+      console.log(error);
+      // setError('Failed to Delete App, Try Again!');
     }
   }, []);
 
@@ -131,6 +154,7 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
         getAllApps,
         appList,
         updateAppName,
+        deleteApp,
       }}
     >
       {children}

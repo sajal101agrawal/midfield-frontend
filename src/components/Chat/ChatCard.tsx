@@ -67,7 +67,7 @@ const ChatCard = () => {
       <div>
         {chatData.map((chat, key) => (
           <Link
-            to="/"
+            to="#"
             className="flex items-center gap-5 py-3 px-7.5 hover:bg-gray-3 dark:hover:bg-meta-4"
             key={key}
           >
@@ -75,7 +75,7 @@ const ChatCard = () => {
               <img src={chat.avatar} alt="User" />
               <span
                 className="absolute right-0 bottom-0 h-3.5 w-3.5 rounded-full border-2 border-white"
-                style={{backgroundColor: chat.color}}
+                style={{ backgroundColor: chat.color }}
               ></span>
             </div>
 
