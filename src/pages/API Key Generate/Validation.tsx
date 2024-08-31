@@ -72,7 +72,7 @@ const Validation: React.FC = () => {
   return (
     <>
       <div className=" w-full mx-auto  ">
-        <div className="bg-white p-4 mx-2">
+        <div className="bg-white p-2 xsm:p-4">
           <div className="text-2xl mb-4 flex items-center gap-2">
             <IoArrowBackSharp
               className="text-black cursor-pointer"

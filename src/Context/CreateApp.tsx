@@ -98,9 +98,11 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
         { google_id, email },
       );
       setAppList(res.data.app_lists);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      setError('Failed to load App List, Please Reload!');
+      if (error.response.data.error === 'No user found') {
+        setError('No user found');
+      } else setError('Failed to load App List, Please Reload!');
     } finally {
       setIsLoading(false);
     }
