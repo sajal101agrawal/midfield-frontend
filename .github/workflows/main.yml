@@ -35,11 +35,11 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}  # Remote directory to deploy to
 
-      - name: SSH commands to restart server (optional)
-        run: |
-          ssh -i ${{ secrets.EC2_SSH_KEY }} ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }} << 'EOF'
-            cd ${{ secrets.TARGET_DIR }}
-            # Optionally, restart your server or any necessary services
-            # Example: pm2 restart my-app
-            exit
-          EOF
+      # - name: SSH commands to restart server (optional)
+      #   run: |
+      #     ssh -i ${{ secrets.EC2_SSH_KEY }} ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }} << 'EOF'
+      #       cd ${{ secrets.TARGET_DIR }}
+      #       # Optionally, restart your server or any necessary services
+      #       # Example: pm2 restart my-app
+      #       exit
+      #     EOF
