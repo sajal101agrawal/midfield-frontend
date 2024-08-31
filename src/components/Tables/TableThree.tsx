@@ -49,12 +49,6 @@ const TableThree = (props: { appList: any }) => {
           </table>
         </div>
       </div>
-      <div className="w-screen h-screen fixed top-0 left-0 right-0 bg-black/50 z-50 flex justify-center items-center">
-        <div className=" max-w-[350px] w-full bg-white shadow-md ">
-          <RiErrorWarningLine />
-          <h1>Are You sure you want to delete {currentAppName}</h1>
-        </div>
-      </div>
     </>
   );
 };

@@ -15,7 +15,7 @@ const SignUp: React.FC = () => {
                 <img className="dark:hidden" src={LogoDark} alt="Logo" />
               </Link>
               <p className="2xl:px-20">
-                Seamless Access to Diverse Services – Welcome to Midfield
+                Seamless Prompt Validation - Welcome to Midfield
               </p>
 
               <span className="mt-15 inline-block">

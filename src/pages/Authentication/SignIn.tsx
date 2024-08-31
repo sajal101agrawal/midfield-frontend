@@ -16,7 +16,7 @@ const SignIn: React.FC = () => {
               </Link>
 
               <p className="2xl:px-20">
-                Seamless Access to Diverse Services - Welcome to Midfield
+                Seamless Prompt Validation - Welcome to Midfield
               </p>
 
               <span className="mt-15 inline-block">
@@ -153,8 +153,7 @@ const SignIn: React.FC = () => {
                   alt="Logo"
                 />
               </div>
-              <span className="mb-1.5 block font-medium">Start for free</span>
-              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
+              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2 text-center">
                 Sign In to Midfield
               </h2>
 
