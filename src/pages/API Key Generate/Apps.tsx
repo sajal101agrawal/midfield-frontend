@@ -9,6 +9,7 @@ import { TbReload } from 'react-icons/tb';
 const Apps: React.FC = () => {
   const { appList, isLoading, error, getAllApps } = useCreateApp();
   const { userData } = useUser();
+  console.log(error);
 
   useEffect(() => {
     if (!userData) return;
@@ -53,7 +54,7 @@ const Apps: React.FC = () => {
           </div>
         )}
 
-        {error && error !== 'No user found' && (
+        {error && error !== 'user doesnt have any apps created' && (
           <div className="mx-2">
             <p className="text-center text-red-500  mt-4 mb-2 font-bold">
               {error}
@@ -69,14 +70,13 @@ const Apps: React.FC = () => {
           </div>
         )}
 
-        {error === 'No user found' ||
-          (appList?.length === 0 && !isLoading && (
-            <div className="border border-stroke rounded-lg h-32 bg-stroke/60 flex justify-center items-center ">
-              <p className="text-black font-bold">
-                No app is created, Please create an app.
-              </p>
-            </div>
-          ))}
+        {error === 'user doesnt have any apps created' && (
+          <div className="border border-stroke rounded-lg h-32 bg-stroke/60 flex justify-center items-center ">
+            <p className="text-black font-bold">
+              No app is created, Please create an app.
+            </p>
+          </div>
+        )}
 
         {appList?.length > 0 && !isLoading && !error && (
           <TableThree appList={appList} />

@@ -97,11 +97,12 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
         'https://api.midfield.ai/api/app/get_apps/',
         { google_id, email },
       );
+      console.log(res.data);
       setAppList(res.data.app_lists);
     } catch (error: any) {
       console.log(error);
-      if (error.response.data.error === 'No user found') {
-        setError('No user found');
+      if (error.response.data.error) {
+        setError(error.response.data.error);
       } else setError('Failed to load App List, Please Reload!');
     } finally {
       setIsLoading(false);
@@ -134,7 +135,7 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
   ) {
     try {
       const res = await axios.delete(
-        'https://api.midfield.ai/api/app/delete_apps/',
+        'https://api.midfield.ai//api/app/update_apps/',
         //@ts-ignore
         { google_id, email, app_name },
       );

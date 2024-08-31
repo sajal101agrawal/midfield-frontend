@@ -1,24 +1,25 @@
-import { useEffect, useState } from 'react';
-import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Outlet, Route, Routes, useLocation } from 'react-router-dom';
 
 // import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
-import SignUp from './pages/Authentication/SignUp';
-import Calendar from './pages/Calendar';
-import Chart from './pages/Chart';
+// import SignUp from './pages/Authentication/SignUp';
+// import Calendar from './pages/Calendar';
+// import Chart from './pages/Chart';
 import ECommerce from './pages/Dashboard/ECommerce';
-import FormElements from './pages/Form/FormElements';
-import FormLayout from './pages/Form/FormLayout';
-import Profile from './pages/Profile';
-import Settings from './pages/Settings';
-import Tables from './pages/Tables';
-import Alerts from './pages/UiElements/Alerts';
-import Buttons from './pages/UiElements/Buttons';
+// import FormElements from './pages/Form/FormElements';
+// import FormLayout from './pages/Form/FormLayout';
+// import Profile from './pages/Profile';
+// import Settings from './pages/Settings';
+// import Tables from './pages/Tables';
+// import Alerts from './pages/UiElements/Alerts';
+// import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
 import AuthReceiver from './pages/Authentication/AuthReceiver';
 import CreateApp from './pages/API Key Generate/Apps';
 import Validation from './pages/API Key Generate/Validation';
+import Home from './pages/Home/Home';
 
 function App() {
   const { pathname } = useLocation();
@@ -27,12 +28,17 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  // <Navigate to={'/auth/signin'} />
-
   return (
     <Routes>
-      <Route path="/" element={<Navigate to={'/auth/signin'} />} />
-      <Route path="/auth-receiver" element={<AuthReceiver />} />
+      <Route
+        path="/"
+        element={
+          <>
+            <PageTitle title="WelCome to MidField" />
+            <Home />
+          </>
+        }
+      />
       <Route path="/auth" element={<Outlet />}>
         <Route
           index
@@ -47,7 +53,7 @@ function App() {
           path="signin"
           element={
             <>
-              <PageTitle title="Signin" />
+              <PageTitle title="MidField | Sign-in" />
               <SignIn />
             </>
           }
@@ -56,18 +62,19 @@ function App() {
           path="/auth/signup"
           element={
             <>
-              <PageTitle title="Signup" />
-              <SignUp />
+            <PageTitle title="Signup" />
+            <SignUp />
             </>
-          }
-        /> */}
+            }
+            /> */}
       </Route>
+      <Route path="/auth-receiver" element={<AuthReceiver />} />
       <Route path="/dashboard" element={<DefaultLayout />}>
         <Route
           index
           element={
             <>
-              <PageTitle title="Dashboard" />
+              <PageTitle title="MidField | Dashboard" />
               <ECommerce />
             </>
           }

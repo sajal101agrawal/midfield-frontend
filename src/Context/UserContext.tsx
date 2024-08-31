@@ -35,8 +35,8 @@ function UserProvider({ children }: UserProviderProps) {
   const [userData, setUserData] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [formValidators, setFormValidators] = useState<number[]>([]);
   const navigate = useNavigate();
+  console.log(userData);
 
   useEffect(() => {
     // Check if the user is authenticated
@@ -82,7 +82,7 @@ function UserProvider({ children }: UserProviderProps) {
     localStorage.removeItem('user-data');
     setIsAuthenticated(false);
     setUserData(null);
-    navigate('/auth/signin');
+    navigate('/');
   };
 
   return (

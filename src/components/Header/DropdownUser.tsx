@@ -6,7 +6,7 @@ import { useUser } from '../../Context/UserContext';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { userData, logOut } = useUser();
+  const { userData } = useUser();
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
@@ -22,7 +22,7 @@ const DropdownUser = () => {
           <span className=" text-xs sm:block hidden">{userData?.email}</span>
         </span>
 
-        <span className="h-12 w-12 rounded-full overflow-hidden">
+        <span className="h-12 w-12 rounded-full flex justify-center items-center overflow-hidden">
           <img src={userData?.picture} alt="User" />
         </span>
 
