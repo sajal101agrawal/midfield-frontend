@@ -67,7 +67,7 @@ function App() {
           index
           element={
             <>
-              <PageTitle title="eCommerce Dashboard" />
+              <PageTitle title="Dashboard" />
               <ECommerce />
             </>
           }
@@ -76,7 +76,7 @@ function App() {
           path="apps"
           element={
             <>
-              <PageTitle title="Apps" />
+              <PageTitle title="Dashboard | Apps" />
               <CreateApp />
             </>
           }
@@ -85,7 +85,7 @@ function App() {
           path="apps/create_new_app"
           element={
             <>
-              <PageTitle title="Create New App" />
+              <PageTitle title="Dashboard | Create New App" />
               <Validation />
             </>
           }

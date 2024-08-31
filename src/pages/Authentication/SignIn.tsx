@@ -5,7 +5,7 @@ import midfieldLogo from '../../images/logo/midfield-logo.png';
 
 const SignIn: React.FC = () => {
   return (
-    <div className="p-4 w-screen h-screen grid place-items-center">
+    <div className="md:p-4 p-0 w-screen h-screen grid place-items-center">
       <div className="rounded-sm  w-[95vw] sm:w-[80vw]  xl:w-auto border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
@@ -144,7 +144,7 @@ const SignIn: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-full self-stretch flex items-center justify-center border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
+          <div className="w-full self-stretch flex items-center  justify-center border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <div className="mb-5.5">
                 <img

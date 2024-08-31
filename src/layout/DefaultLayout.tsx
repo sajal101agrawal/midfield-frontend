@@ -8,7 +8,7 @@ const DefaultLayout: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { userData, isAuthenticated } = useUser();
 
-  if (isAuthenticated === false) return <Navigate to={'/auth/signin'} />;
+  // if (isAuthenticated === false) return <Navigate to={'/auth/signin'} />;
 
   return (
     <div className="dark:bg-boxdark-2 dark:text-bodydark">
