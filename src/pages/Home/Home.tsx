@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Hero from '../../../public/hero.png';
+import Hero from '../../images/home/hero.png';
 import Logo from '../../images/logo/midfield-logo.png';
 
 export default function Home() {
@@ -104,28 +104,29 @@ export default function Home() {
       </nav>
       {/* --Hero-- */}
       <div className="pt-24">
-        <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <div className="container px-3 mx-auto grid md:grid-cols-2 grid-cols-1   items-center">
           {/* --Left Col-- */}
-          <div className="flex text-white flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+          <div className="flex text-white flex-col w-full justify-center items-start text-center md:text-left">
             <p className="uppercase tracking-loose w-full">
               Welcome to MidField
             </p>
-            <h1 className="my-4 text-5xl font-bold leading-tight">
+            <h1 className="my-4 lg:text-5xl text-4xl font-bold leading-tight w-full">
               Empower Your AI with Clean and Compliant Prompts
             </h1>
-            <p className="leading-normal text-2xl mb-8">
-            Ensure your AI interactions remain professional, safe, and effective with our prompt validation package.
+            <p className="leading-normal lg:text-2xl text-xl mb-8">
+              Ensure your AI interactions remain professional, safe, and
+              effective with our prompt validation package.
             </p>
             <Link
               to={'/auth/signin'}
-              className="mx-auto lg:mx-0 hover:underline text-black bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+              className="mx-auto md:mx-0 hover:underline text-black bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
             >
               Start Now
             </Link>
           </div>
           {/* --Right Col-- */}
-          <div className="w-full md:w-3/5 py-6 text-center">
-            <img className="w-full md:w-4/5 z-50" src={Hero} />
+          <div className="w-full text-center">
+            <img className="w-full z-50" src={Hero} />
           </div>
         </div>
       </div>
@@ -168,20 +169,19 @@ export default function Home() {
       </div>
       <section className="bg-white border-b py-8">
         <div className="container max-w-5xl mx-auto m-8">
-          <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          </h2>
+          <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800"></h2>
           <div className="w-full mb-4">
             <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
           <div className="flex items-center flex-wrap">
-            <div className="w-5/6 sm:w-1/2 p-6">
+            <div className="w-full sm:w-1/2 p-6 mx-auto sm:mx-0">
               <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-              🚀 Easy Integration
+                🚀 Easy Integration
               </h3>
               <p className="text-gray-600 mb-8">
-              Integrate Midfield effortlessly into your existing Python projects. With a simple setup and easy-to-use Package, start validating your prompts within minutes.
-
-
+                Integrate Midfield effortlessly into your existing Python
+                projects. With a simple setup and easy-to-use Package, start
+                validating your prompts within minutes.
                 {/* <br />
                 <br />
                 Images from:
@@ -193,7 +193,7 @@ export default function Home() {
                 </a> */}
               </p>
             </div>
-            <div className="w-full sm:w-1/2 p-6">
+            <div className="w-full sm:w-1/2 p-6 ">
               <svg
                 className="w-full sm:h-64 mx-auto"
                 viewBox="0 0 1177 598.5"
@@ -628,10 +628,12 @@ export default function Home() {
             <div className="w-full sm:w-1/2 p-6 mt-6">
               <div className="align-middle">
                 <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                🔍 Comprehensive Validation
+                  🔍 Comprehensive Validation
                 </h3>
                 <p className="text-gray-600 mb-8">
-                Midfield checks for a wide range of parameters, including foul language, profanity, drug mentions, and more, ensuring your AI interactions are safe and respectful.
+                  Midfield checks for a wide range of parameters, including foul
+                  language, profanity, drug mentions, and more, ensuring your AI
+                  interactions are safe and respectful.
                   {/* <br />
                   <br />
                   Images from:
@@ -650,7 +652,7 @@ export default function Home() {
       <section className="bg-white py-8">
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
           <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          How It Works
+            How It Works
           </h2>
           <div className="w-full mb-4">
             <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -661,19 +663,16 @@ export default function Home() {
                 href="#"
                 className="flex flex-wrap no-underline hover:no-underline pt-12"
               >
-                <p className="w-full text-gray-600 text-xs md:text-sm px-6">
-
-                </p>
+                <p className="w-full text-gray-600 text-xs md:text-sm px-6"></p>
                 <div className="w-full font-bold text-xl text-gray-800 px-6 text-center mt-2 mb-3">
-                Get Your Free API Key
+                  Get Your Free API Key
                 </div>
                 <p className="text-gray-800 text-base px-6 mb-5 text-center w-[-webkit-fill-available]">
-                Sign up and receive your free API key.
+                  Sign up and receive your free API key.
                 </p>
               </a>
             </div>
-            <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            </div>
+            <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6"></div>
           </div>
           <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
             <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
@@ -681,19 +680,17 @@ export default function Home() {
                 href="#"
                 className="flex flex-wrap no-underline hover:no-underline pt-12"
               >
-                <p className="w-full text-gray-600 text-xs md:text-sm px-6">
-
-                </p>
+                <p className="w-full text-gray-600 text-xs md:text-sm px-6"></p>
                 <div className="w-full font-bold text-xl text-gray-800 px-6 text-center mt-2 mb-3">
-                Integrate in Minutes
+                  Integrate in Minutes
                 </div>
                 <p className="text-gray-800 text-base px-6 mb-5 text-center w-[-webkit-fill-available]">
-                Follow our simple documentation to integrate Midfield into your Python environment.
+                  Follow our simple documentation to integrate Midfield into
+                  your Python environment.
                 </p>
               </a>
             </div>
-            <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            </div>
+            <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6"></div>
           </div>
           <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
             <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
@@ -701,19 +698,17 @@ export default function Home() {
                 href="#"
                 className="flex flex-wrap no-underline hover:no-underline pt-12"
               >
-                <p className="w-full text-gray-600 text-xs md:text-sm px-6">
-    
-                </p>
+                <p className="w-full text-gray-600 text-xs md:text-sm px-6"></p>
                 <div className="w-full font-bold text-xl text-gray-800 px-6 text-center mt-2 mb-3">
-                Validate Prompts
+                  Validate Prompts
                 </div>
                 <p className="text-gray-800 text-base px-6 mb-5 text-center w-[-webkit-fill-available]">
-                Start validating prompts and maintain the quality of your AI conversations.
+                  Start validating prompts and maintain the quality of your AI
+                  conversations.
                 </p>
               </a>
             </div>
-            <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            </div>
+            <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6"></div>
           </div>
         </div>
       </section>
@@ -843,8 +838,9 @@ export default function Home() {
           Signup, Create App and you are ready to rock!
         </h3>
         <a
-        href='/auth/signin' 
-        className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+          href="/auth/signin"
+          className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+        >
           Signup Now
         </a>
       </section>
@@ -989,13 +985,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className='d-flex justify-center text-center'>
-        <a
-                  href="midfield.ai"
-                  className="text-gray-500 text-center w-full"
-                >
-                  Copyright 2024 | Midfield
-                </a>
+        <div className="d-flex justify-center text-center">
+          <a href="midfield.ai" className="text-gray-500 text-center w-full">
+            Copyright 2024 | Midfield
+          </a>
         </div>
       </footer>
     </div>

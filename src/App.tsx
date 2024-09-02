@@ -7,7 +7,6 @@ import SignIn from './pages/Authentication/SignIn';
 // import SignUp from './pages/Authentication/SignUp';
 // import Calendar from './pages/Calendar';
 // import Chart from './pages/Chart';
-import ECommerce from './pages/Dashboard/ECommerce';
 // import FormElements from './pages/Form/FormElements';
 // import FormLayout from './pages/Form/FormLayout';
 // import Profile from './pages/Profile';
@@ -20,6 +19,7 @@ import AuthReceiver from './pages/Authentication/AuthReceiver';
 import CreateApp from './pages/API Key Generate/Apps';
 import Validation from './pages/API Key Generate/Validation';
 import Home from './pages/Home/Home';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   const { pathname } = useLocation();
@@ -75,7 +75,7 @@ function App() {
           element={
             <>
               <PageTitle title="MidField | Dashboard" />
-              <ECommerce />
+              <Dashboard />
             </>
           }
         />

@@ -4,8 +4,10 @@ import {
   useState,
   ReactNode,
   useCallback,
+  useEffect,
 } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 interface data {
   app_name: string;
@@ -53,6 +55,12 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [appList, setAppList] = useState<any[]>([]);
+  const location = useLocation();
+
+  useEffect(() => {
+    setError(null);
+    setIsLoading(false);
+  }, [location.pathname]);
 
   const createApp = async (
     google_id: string,
@@ -64,7 +72,7 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
     setIsLoading(true);
     try {
       const res = await axios.post(
-        `https://api.midfield.ai/api/app/create_apps/`,
+        `https://api.midfield.ai/api/app/create_app/`,
 
         {
           google_id,
@@ -97,13 +105,12 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
         'https://api.midfield.ai/api/app/get_apps/',
         { google_id, email },
       );
-      console.log(res.data);
       setAppList(res.data.app_lists);
     } catch (error: any) {
-      console.log(error);
-      if (error.response.data.error) {
-        setError(error.response.data.error);
-      } else setError('Failed to load App List, Please Reload!');
+      setError(
+        error.response?.data?.error ||
+          'Failed to load App List, Please Reload!',
+      );
     } finally {
       setIsLoading(false);
     }
@@ -133,17 +140,20 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
     email: string,
     app_name: string,
   ) {
+    console.log(app_name, google_id, email);
     try {
-      const res = await axios.delete(
-        'https://api.midfield.ai//api/app/update_apps/',
-        //@ts-ignore
+      const res = await axios.post(
+        'https://api.midfield.ai/api/app/delete_apps/',
         { google_id, email, app_name },
       );
       console.log(res.data);
       getAllApps(google_id, email);
-    } catch (error) {
-      console.log(error);
-      // setError('Failed to Delete App, Try Again!');
+    } catch (error: any) {
+      //@ts-ignore
+      throw new Error(
+        error.response?.data?.error ||
+          `Failed to Delete App ${app_name}, Try Again!`,
+      );
     }
   }, []);
 

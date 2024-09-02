@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import LogoDark from '../../images/logo/logo-dark.svg';
 import midfieldLogo from '../../images/logo/midfield-logo.png';
+import { useUser } from '../../Context/UserContext';
 
 const SignIn: React.FC = () => {
+  const { error } = useUser();
+
   return (
     <div className="md:p-4 p-0 w-screen h-screen grid place-items-center">
       <div className="rounded-sm  w-[95vw] sm:w-[80vw]  xl:w-auto border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -145,8 +148,8 @@ const SignIn: React.FC = () => {
           </div>
 
           <div className="w-full self-stretch flex items-center  justify-center border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
-            <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              <div className="mb-5.5">
+            <div className="w-full p-12.5 xl:p-17.5">
+              <div className="mb-1">
                 <img
                   className="block xl:hidden h-16 mx-auto"
                   src={midfieldLogo}
@@ -283,7 +286,7 @@ const SignIn: React.FC = () => {
               </form> */}
               <a
                 href="https://api.midfield.ai/auth/sign-in"
-                className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark font-semibold dark:bg-meta-4 dark:hover:bg-opacity-50"
+                className="flex w-full max-w-md mx-auto items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark font-semibold dark:bg-meta-4 dark:hover:bg-opacity-50"
               >
                 <span>
                   <svg
@@ -320,6 +323,11 @@ const SignIn: React.FC = () => {
                 </span>
                 Sign in with Google
               </a>
+              {error && (
+                <p className="text-red-500 text-center mt-2 font-bold">
+                  {error}
+                </p>
+              )}
             </div>
           </div>
         </div>

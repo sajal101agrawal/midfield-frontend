@@ -9,16 +9,19 @@ import 'flatpickr/dist/flatpickr.min.css';
 import { UserProvider } from './Context/UserContext';
 import { CreateAppProvider } from './Context/CreateApp';
 import { ValidatorsProvider } from './Context/ValidatorsContext';
+import { DashboardProvider } from './Context/DashboardContext';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Router>
       <UserProvider>
-        <CreateAppProvider>
-          <ValidatorsProvider>
-            <App />
-          </ValidatorsProvider>
-        </CreateAppProvider>
+        <DashboardProvider>
+          <CreateAppProvider>
+            <ValidatorsProvider>
+              <App />
+            </ValidatorsProvider>
+          </CreateAppProvider>
+        </DashboardProvider>
       </UserProvider>
     </Router>
   </React.StrictMode>,

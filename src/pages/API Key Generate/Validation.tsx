@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ValidatorEl from '../../components/API Key Validator/ValidatorEL';
-import { TbReload } from 'react-icons/tb';
 import { useUser } from '../../Context/UserContext';
 import { useCreateApp } from '../../Context/CreateApp';
 import { IoArrowBackSharp } from 'react-icons/io5';
@@ -32,6 +31,7 @@ const Validation: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (validators.length > 0) return;
     getAllValidators();
   }, [getAllValidators]);
 
@@ -109,15 +109,45 @@ const Validation: React.FC = () => {
             <h3 className="font-bold text-black mx-2">Validators</h3>
           </div>
           {errorValidators && !isLoadingValidators && (
-            <div className="mx-2">
-              <p className="text-center text-red-500  mt-4 mb-2 font-bold">
-                {errorValidators + '. Please Reload it  again!'}
-              </p>
+            <div className=" text-center font-bold text-meta-1 rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default ">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"
+                  />
+                </svg>
+                <span>{error}</span>
+              </div>
               <button
-                className=" border flex gap-2 mx-auto items-center border-stroke bg-white text-black rounded-md font-semibold shadow-3 px-2 py-1"
-                onClick={getAllValidators}
+                className=" shadow-default border bg-[#00BDD6] text-white border-stroke rounded-sm hover:bg-stroke transition-all p-2 flex gap-2 mx-auto"
+                onClick={() => {
+                  getAllValidators();
+                }}
               >
-                <TbReload className="text-2xl" /> Reload Validators
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                  />
+                </svg>
+                Reload
               </button>
             </div>
           )}

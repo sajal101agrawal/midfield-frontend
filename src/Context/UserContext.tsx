@@ -32,23 +32,38 @@ interface UserProviderProps {
 }
 
 function UserProvider({ children }: UserProviderProps) {
-  const [userData, setUserData] = useState<User | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userData, setUserData] = useState<User | null>({
+    //@ts-ignore
+    aud: '238378436733-q1sbs6acge2t14e6u5imnct6e79m3vq3.apps.googleusercontent.com',
+    at_hash: '1AqID9_31XxkVCRs6qfCDg',
+    azp: '238378436733-q1sbs6acge2t14e6u5imnct6e79m3vq3.apps.googleusercontent.com',
+    email: 'vkj03360@gmail.com',
+    email_verified: true,
+    exp: 1725249610,
+    family_name: 'John',
+    given_name: 'Vk',
+    iat: 1725246010,
+    name: 'Vk John',
+    iss: 'https://accounts.google.com',
+    picture:
+      'https://lh3.googleusercontent.com/a/ACg8ocJ4Ay5oT9OgP8R4cyiJnA___afJPx4dDklgEKyLfEiu2IODtg=s96-c',
+    sub: '109968820866080530834',
+  });
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-  console.log(userData);
 
-  useEffect(() => {
-    // Check if the user is authenticated
-    const token = localStorage.getItem('auth-token');
-    const user = localStorage.getItem('user-data');
+  // useEffect(() => {
+  //   // Check if the user is authenticated
+  //   const token = localStorage.getItem('auth-token');
+  //   const user = localStorage.getItem('user-data');
 
-    if (token && user) {
-      setIsAuthenticated(true);
-      setUserData(JSON.parse(localStorage.getItem('user-data') || ''));
-      navigate('/dashboard');
-    }
-  }, []);
+  //   if (token && user) {
+  //     setIsAuthenticated(true);
+  //     setUserData(JSON.parse(localStorage.getItem('user-data') || ''));
+  //     navigate('/dashboard');
+  //   }
+  // }, []);
 
   const getUserData = async (code: string) => {
     axios
@@ -71,9 +86,12 @@ function UserProvider({ children }: UserProviderProps) {
         navigate('/dashboard');
       })
       .catch((error: any) => {
-        console.error('Authentication Error:', error.response || error.message);
-        setError('Failed to authenticate. Please try again.');
-        // navigate('/auth/signin');
+        setError(
+          error.response.data.error ||
+            error.message ||
+            'Failed to authenticate. Please try again.',
+        );
+        navigate('/auth/signin');
       });
   };
 
