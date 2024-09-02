@@ -11,7 +11,7 @@ const Dashboard: React.FC = () => {
     useDashboard();
 
   useEffect(() => {
-    if (!userData || dashboardData) return;
+    if (!userData) return;
     getDashboardAppAnalytics(userData.sub, userData.email);
   }, []);
 

@@ -72,7 +72,7 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
     setIsLoading(true);
     try {
       const res = await axios.post(
-        `https://api.midfield.ai/api/app/create_app/`,
+        `https://api.midfield.ai/api/app/create_apps/`,
 
         {
           google_id,

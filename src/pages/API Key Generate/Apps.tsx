@@ -10,7 +10,7 @@ const Apps: React.FC = () => {
   const { userData } = useUser();
 
   useEffect(() => {
-    if (!userData || appList.length > 0) return;
+    if (!userData) return;
     getAllApps(userData.sub, userData.email);
   }, [getAllApps]);
 
