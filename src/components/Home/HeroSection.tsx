@@ -17,7 +17,7 @@ function HeroSection() {
           <div className="pr-4 py-2 hover:scale-105 transition-all">
             <Link
               to={'/auth/signin'}
-              className="text-white bg-primary rounded-sm px-6 py-3 text-lg font-medium shadow-default"
+              className="text-white bg-primary rounded-md px-6 py-3 text-lg font-medium shadow-default"
             >
               Sign in
             </Link>
@@ -42,7 +42,7 @@ function HeroSection() {
             </p>
             <Link
               to={'/auth/signin'}
-              className="mx-auto md:mx-0 hover:underline text-black bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+              className="mx-auto md:mx-0 hover:underline text-black bg-white text-gray-800 font-bold rounded-md my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
             >
               Start Now
             </Link>

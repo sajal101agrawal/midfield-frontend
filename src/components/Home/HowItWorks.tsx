@@ -5,8 +5,8 @@ function HowItWorks() {
         <h2 className="w-full my-2 lg:text-5xl text-4xl font-bold leading-tight text-center text-gray-800">
           How It Works
         </h2>
-        <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink ">
-          <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden py-12  shadow  border border-stroke">
+        <div className="w-full  md:w-1/3 p-6 flex flex-col flex-grow flex-shrink ">
+          <div className="flex-1  bg-white rounded-md overflow-hidden py-12  shadow  border border-stroke">
             <a
               href="#"
               className="flex flex-wrap no-underline hover:no-underline"
@@ -21,13 +21,12 @@ function HowItWorks() {
             </a>
           </div>
         </div>
-        <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink  ">
-          <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden py-12 shadow border border-stroke">
+        <div className="w-full   md:w-1/3 p-6 flex flex-col flex-grow flex-shrink  ">
+          <div className="flex-1   bg-white rounded-md overflow-hidden py-12 shadow border border-stroke">
             <a
               href="#"
-              className="flex flex-wrap no-underline hover:no-underline"
+              className="flex flex-wrap no-underline hover:no-underline "
             >
-              <p className="w-full text-gray-600 text-xs md:text-sm px-6"></p>
               <div className="w-full font-bold text-xl text-gray-800 px-6 text-center mt-2 mb-3">
                 Integrate in Minutes
               </div>
@@ -38,8 +37,8 @@ function HowItWorks() {
             </a>
           </div>
         </div>
-        <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink ">
-          <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden py-12  shadow border border-stroke">
+        <div className="w-full  md:w-1/3 p-6 flex flex-col flex-grow flex-shrink ">
+          <div className="flex-1  bg-white rounded-md overflow-hidden py-12  shadow border border-stroke">
             <a
               href="#"
               className="flex flex-wrap no-underline hover:no-underline"

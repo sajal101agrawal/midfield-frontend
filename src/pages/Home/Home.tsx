@@ -7,11 +7,11 @@ import { lazy, Suspense } from 'react';
 const HeroSection = lazy(() => import('../../components/Home/HeroSection'));
 
 const IntegerationAndValidation = lazy(
-  () => import('./IntegerationAndValidation'),
+  () => import('../../components/Home/IntegerationAndValidation'),
 );
-const HowItWorks = lazy(() => import('./HowItWorks'));
-const Cta = lazy(() => import('./CTA'));
-const Footer = lazy(() => import('./Footer'));
+const HowItWorks = lazy(() => import('../../components/Home/HowItWorks'));
+const Cta = lazy(() => import('../../components/Home/Cta'));
+const Footer = lazy(() => import('../../components/Home/Footer'));
 
 export default function Home() {
   return (
