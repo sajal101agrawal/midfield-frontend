@@ -216,7 +216,7 @@ const Validation: React.FC = () => {
       </div>
 
       {isModelOpen && (
-        <div className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center  bg-black/50 overflow-hidden">
+        <div className="fixed p-2 top-0 left-0 w-screen h-screen flex justify-center items-center  bg-black/50 overflow-hidden">
           <div className=" bg-white shadow-4   rounded-lg overflow-hidden w-full max-w-150 ">
             <div className="bg-gray p-2 flex justify-between">
               <h1 className=" font-extrabold text-black flex items-center gap-2">

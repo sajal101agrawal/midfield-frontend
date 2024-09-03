@@ -81,11 +81,9 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
           validators,
         },
       );
-      console.log(res.data);
       setAPIData(res.data.data);
       setisModelOpen(true);
     } catch (error: any) {
-      console.log(error);
       setError(
         error.response?.data?.error || 'Something went wrong Try Again!',
       );
@@ -146,7 +144,6 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
         'https://api.midfield.ai/api/app/delete_apps/',
         { google_id, email, app_name },
       );
-      console.log(res.data);
       getAllApps(google_id, email);
     } catch (error: any) {
       //@ts-ignore

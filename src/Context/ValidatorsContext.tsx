@@ -36,9 +36,8 @@ function ValidatorsProvider({ children }: ValidatorsProviderProps) {
         'https://api.midfield.ai/api/validator/getlistofavailablevalidators/',
       );
       setValidators(res.data.data);
-    } catch (error) {
-      console.log(error);
-      setError('Failed to load validators');
+    } catch (error: any) {
+      setError(error.response.data.error || 'Failed to load validators');
     } finally {
       setIsLoading(false);
     }
