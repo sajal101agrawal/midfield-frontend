@@ -1,25 +1,16 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Outlet, Route, Routes, useLocation } from 'react-router-dom';
 
-// import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
-import SignIn from './pages/Authentication/SignIn';
-// import SignUp from './pages/Authentication/SignUp';
-// import Calendar from './pages/Calendar';
-// import Chart from './pages/Chart';
-// import FormElements from './pages/Form/FormElements';
-// import FormLayout from './pages/Form/FormLayout';
-// import Profile from './pages/Profile';
-// import Settings from './pages/Settings';
-// import Tables from './pages/Tables';
-// import Alerts from './pages/UiElements/Alerts';
-// import Buttons from './pages/UiElements/Buttons';
-import DefaultLayout from './layout/DefaultLayout';
-import AuthReceiver from './pages/Authentication/AuthReceiver';
-import CreateApp from './pages/API Key Generate/Apps';
-import Validation from './pages/API Key Generate/Validation';
-import Home from './pages/Home/Home';
-import Dashboard from './pages/Dashboard/Dashboard';
+import Loader from './common/Loader';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const SignIn = lazy(() => import('./pages/Authentication/SignIn'));
+const AuthReceiver = lazy(() => import('./pages/Authentication/AuthReceiver'));
+const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
+const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
+const CreateApp = lazy(() => import('./pages/API Key Generate/Apps'));
+const Validation = lazy(() => import('./pages/API Key Generate/Validation'));
 
 function App() {
   const { pathname } = useLocation();
@@ -29,157 +20,69 @@ function App() {
   }, [pathname]);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <>
-            <PageTitle title="WelCome to MidField" />
-            <Home />
-          </>
-        }
-      />
-      <Route path="/auth" element={<Outlet />}>
+    <Suspense fallback={<Loader />}>
+      <Routes>
         <Route
-          index
+          path="/"
           element={
             <>
-              <PageTitle title="Signin" />
-              <SignIn />
+              <PageTitle title="WelCome to MidField" />
+              <Home />
             </>
           }
         />
-        <Route
-          path="signin"
-          element={
-            <>
-              <PageTitle title="MidField | Sign-in" />
-              <SignIn />
-            </>
-          }
-        />
-        {/* <Route
-          path="/auth/signup"
-          element={
-            <>
-            <PageTitle title="Signup" />
-            <SignUp />
-            </>
+        <Route path="/auth" element={<Outlet />}>
+          <Route
+            index
+            element={
+              <>
+                <PageTitle title="Signin" />
+                <SignIn />
+              </>
             }
-            /> */}
-      </Route>
-      <Route path="/auth-receiver" element={<AuthReceiver />} />
-      <Route path="/dashboard" element={<DefaultLayout />}>
-        <Route
-          index
-          element={
-            <>
-              <PageTitle title="MidField | Dashboard" />
-              <Dashboard />
-            </>
-          }
-        />
-        <Route
-          path="apps"
-          element={
-            <>
-              <PageTitle title="Dashboard | Apps" />
-              <CreateApp />
-            </>
-          }
-        />
-        <Route
-          path="apps/create_new_app"
-          element={
-            <>
-              <PageTitle title="Dashboard | Create New App" />
-              <Validation />
-            </>
-          }
-        />
-        {/* <Route
-          path="calendar"
-          element={
-            <>
-              <PageTitle title="Calendar" />
-              <Calendar />
-            </>
-          }
-        />
-        <Route
-          path="profile"
-          element={
-            <>
-              <PageTitle title="Profile" />
-              <Profile />
-            </>
-          }
-        />
-        <Route
-          path="forms/form-elements"
-          element={
-            <>
-              <PageTitle title="Form Elements" />
-              <FormElements />
-            </>
-          }
-        />
-        <Route
-          path="forms/form-layout"
-          element={
-            <>
-              <PageTitle title="Form Layout" />
-              <FormLayout />
-            </>
-          }
-        />
-        <Route
-          path="tables"
-          element={
-            <>
-              <PageTitle title="Tables" />
-              <Tables />
-            </>
-          }
-        />
-        <Route
-          path="settings"
-          element={
-            <>
-              <PageTitle title="Settings" />
-              <Settings />
-            </>
-          }
-        />
-        <Route
-          path="chart"
-          element={
-            <>
-              <PageTitle title="Basic Chart" />
-              <Chart />
-            </>
-          }
-        />
-        <Route
-          path="ui/alerts"
-          element={
-            <>
-              <PageTitle title="Alerts" />
-              <Alerts />
-            </>
-          }
-        />
-        <Route
-          path="ui/buttons"
-          element={
-            <>
-              <PageTitle title="Buttons" />
-              <Buttons />
-            </>
-          }
-        /> */}
-      </Route>
-    </Routes>
+          />
+          <Route
+            path="signin"
+            element={
+              <>
+                <PageTitle title="MidField | Sign-in" />
+                <SignIn />
+              </>
+            }
+          />
+        </Route>
+        <Route path="/auth-receiver" element={<AuthReceiver />} />
+        <Route path="/dashboard" element={<DefaultLayout />}>
+          <Route
+            index
+            element={
+              <>
+                <PageTitle title="MidField | Dashboard" />
+                <Dashboard />
+              </>
+            }
+          />
+          <Route
+            path="apps"
+            element={
+              <>
+                <PageTitle title="Dashboard | Apps" />
+                <CreateApp />
+              </>
+            }
+          />
+          <Route
+            path="apps/create_new_app"
+            element={
+              <>
+                <PageTitle title="Dashboard | Create New App" />
+                <Validation />
+              </>
+            }
+          />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 

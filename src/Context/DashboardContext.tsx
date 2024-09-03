@@ -54,29 +54,6 @@ function DashboardProvider({ children }: DashboardProviderProps) {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const getDashboardAppData = useCallback(async function getAllApps(
-  //   google_id: string,
-  //   email: string,
-  // ) {
-  //   setIsLoading(true);
-  //   setError(null);
-  //   try {
-  //     const res = await axios.post('https://api.midfield.ai/dashboard', {
-  //       google_id,
-  //       email,
-  //     });
-  //     console.log(res.data);
-  //     setAppDetails(res.data);
-  //   } catch (error: any) {
-  //     setError(
-  //       error.response?.data?.error ||
-  //         'unable to load app data, Please Reload!',
-  //     );
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // }, []);
-
   const getDashboardAppAnalytics = useCallback(async function getAllApps(
     google_id: string,
     email: string,

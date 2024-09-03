@@ -52,53 +52,55 @@ const Apps: React.FC = () => {
           </div>
         )}
 
-        {error && error !== 'user doesnt have any apps created' && (
-          <div className=" text-center font-bold text-meta-1 rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default ">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
+        {!isLoading &&
+          error &&
+          error !== 'user doesnt have any apps created' && (
+            <div className=" text-center font-bold text-meta-1 rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default ">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"
+                  />
+                </svg>
+                <span>{error}</span>
+              </div>
+              <button
+                className=" shadow-default border bg-[#00BDD6] text-white border-stroke rounded-sm hover:bg-stroke transition-all p-2 flex gap-2 mx-auto"
+                onClick={() => {
+                  if (userData) {
+                    getAllApps(userData.sub, userData.email);
+                  }
+                }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"
-                />
-              </svg>
-              <span>{error}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                  />
+                </svg>
+                Reload
+              </button>
             </div>
-            <button
-              className=" shadow-default border bg-[#00BDD6] text-white border-stroke rounded-sm hover:bg-stroke transition-all p-2 flex gap-2 mx-auto"
-              onClick={() => {
-                if (userData) {
-                  getAllApps(userData.sub, userData.email);
-                }
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
-                />
-              </svg>
-              Reload
-            </button>
-          </div>
-        )}
+          )}
 
-        {error === 'user doesnt have any apps created' && (
+        {!isLoading && error === 'user doesnt have any apps created' && (
           <div className="border border-stroke rounded-lg h-32 bg-stroke/60 flex justify-center items-center ">
             <p className="text-black font-bold">
               No app is created, Please create an app.

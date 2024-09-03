@@ -15,6 +15,8 @@ const Dashboard: React.FC = () => {
     getDashboardAppAnalytics(userData.sub, userData.email);
   }, []);
 
+  console.log(dashboardData);
+
   if (isLoading) return <Loader />;
 
   if (error)

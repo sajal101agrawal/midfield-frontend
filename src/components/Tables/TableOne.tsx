@@ -53,40 +53,52 @@ const TableOne: React.FC<TableOneProps> = ({ listOfApps }) => {
               </th>
             </tr>
           </thead>
+          {listOfApps && listOfApps?.length > 0 ? (
+            <tbody>
+              {listOfApps?.map((apps: AppDetail, i) => (
+                <tr
+                  className={` ${
+                    //@ts-ignore
+                    i === listOfApps.length - 1
+                      ? ''
+                      : 'border-b border-stroke dark:border-strokedark'
+                  }`}
+                  key={apps.id}
+                >
+                  <td className="text-center p-2.5 xl:p-4">
+                    <p className="text-black ">{apps.app_name}</p>
+                  </td>
 
-          <tbody>
-            {listOfApps?.map((apps: AppDetail, i) => (
-              <tr
-                className={` ${
-                  //@ts-ignore
-                  i === listOfApps.length - 1
-                    ? ''
-                    : 'border-b border-stroke dark:border-strokedark'
-                }`}
-                key={apps.id}
-              >
-                <td className="text-center p-2.5 xl:p-4">
-                  <p className="text-black ">{apps.app_name}</p>
-                </td>
+                  <td className="p-2.5 xl:p-4 max-w-60 break-words">
+                    <p className="text-black text-md">{apps.apikey}</p>
+                  </td>
 
-                <td className="p-2.5 xl:p-4 max-w-60 break-words">
-                  <p className="text-black">{apps.apikey}</p>
-                </td>
+                  <td className=" text-center p-2.5 xl:p-4">
+                    <p className="text-black">{apps.prompts_number}</p>
+                  </td>
 
-                <td className=" text-center p-2.5 xl:p-4">
-                  <p className="text-black">{apps.prompts_number}</p>
-                </td>
+                  <td className=" text-center  p-2.5  xl:p-4">
+                    <p className="text-black ">{apps.prompt_passed}</p>
+                  </td>
 
-                <td className=" text-center  p-2.5  xl:p-4">
-                  <p className="text-black ">{apps.prompt_passed}</p>
-                </td>
-
-                <td className=" text-center p-2.5  xl:p-4">
-                  <p className="text-black">{apps.prompt_failed}</p>
+                  <td className=" text-center p-2.5  xl:p-4">
+                    <p className="text-black">{apps.prompt_failed}</p>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          ) : (
+            <tbody>
+              <tr>
+                <td colSpan={5} className="sm:text-center pl-10 sm:pl-0 p-2.5">
+                  <p className="text-black font-bold">
+                    No application has been created yet, Please proceed with
+                    creating one.
+                  </p>
                 </td>
               </tr>
-            ))}
-          </tbody>
+            </tbody>
+          )}
         </table>
       </div>
     </div>
