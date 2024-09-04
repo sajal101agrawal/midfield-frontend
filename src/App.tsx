@@ -3,14 +3,14 @@ import { Outlet, Route, Routes, useLocation } from 'react-router-dom';
 
 import PageTitle from './components/PageTitle';
 import Loader from './common/Loader';
+import Dashboard from './pages/Dashboard/Dashboard';
+import CreateApp from './pages/API Key Generate/Apps';
+import Validation from './pages/API Key Generate/Validation';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const SignIn = lazy(() => import('./pages/Authentication/SignIn'));
 const AuthReceiver = lazy(() => import('./pages/Authentication/AuthReceiver'));
 const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
-const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
-const CreateApp = lazy(() => import('./pages/API Key Generate/Apps'));
-const Validation = lazy(() => import('./pages/API Key Generate/Validation'));
 
 function App() {
   const { pathname } = useLocation();

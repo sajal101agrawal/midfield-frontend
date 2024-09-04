@@ -16,8 +16,8 @@ const Apps: React.FC = () => {
 
   return (
     <section className="w-full">
-      <div className="w-full min-h-[100vh] mx-auto bg-white p-4">
-        <div className="mb-10">
+      <div className="w-full min-h-[100vh] mx-auto ">
+        <div className="mb-10 bg-white shadow-default  p-4">
           <div className="flex justify-between items-center mb-2">
             <h1 className="text-2xl font-bold  text-black">Your Apps</h1>
             <Link
@@ -34,7 +34,7 @@ const Apps: React.FC = () => {
             our API. Follow these detailed instructions to generate, manage, and
             use your API key effectively.
           </p>
-          <p className="mb-6">
+          <p className="mb-2">
             <span className="font-semibold">
               <RiErrorWarningFill
                 size={20}
@@ -47,7 +47,7 @@ const Apps: React.FC = () => {
         </div>
 
         {isLoading && (
-          <div className="border border-stroke rounded-lg h-32 bg-stroke/60 flex justify-center items-center ">
+          <div className="border border-stroke rounded-lg h-32 shadow-default bg-stroke/60 flex justify-center items-center ">
             <p className="text-black font-bold">Table Loading...</p>
           </div>
         )}

@@ -45,7 +45,7 @@ const ValidatorEl: React.FC<ValidatorElProps> = ({
   );
 
   return (
-    <div className="bg-white p-4 rounded-lg select-none  border border-stroke shadow-2">
+    <div className="bg-white p-4 rounded-md select-none  border border-stroke">
       <div className="flex  justify-between items-center gap-2">
         <h3 className="text-lg font-semibold line-clamp-1 break-words overflow-hidden">
           {validator.name}
