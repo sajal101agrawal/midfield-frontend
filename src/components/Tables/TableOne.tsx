@@ -61,7 +61,7 @@ const TableOne: React.FC<TableOneProps> = ({ listOfApps }) => {
                     //@ts-ignore
                     i === listOfApps.length - 1
                       ? ''
-                      : 'border-b border-stroke dark:border-strokedark'
+                      : 'border-b border-stroke'
                   }`}
                   key={apps.id}
                 >

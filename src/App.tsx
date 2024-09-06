@@ -4,8 +4,9 @@ import { Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import PageTitle from './components/PageTitle';
 import Loader from './common/Loader';
 import Dashboard from './pages/Dashboard/Dashboard';
-import CreateApp from './pages/API Key Generate/Apps';
-import Validation from './pages/API Key Generate/Validation';
+import CreateApp from './pages/Apps/Apps';
+import Validation from './pages/Apps/Validation';
+import EditApp from './pages/Apps/EditApp';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const SignIn = lazy(() => import('./pages/Authentication/SignIn'));
@@ -77,6 +78,15 @@ function App() {
               <>
                 <PageTitle title="Dashboard | Create New App" />
                 <Validation />
+              </>
+            }
+          />
+          <Route
+            path="apps/edit_app/:appName/:id"
+            element={
+              <>
+                <PageTitle title="Dashboard | Edit App" />
+                <EditApp />
               </>
             }
           />

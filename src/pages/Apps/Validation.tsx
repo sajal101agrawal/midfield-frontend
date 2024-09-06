@@ -190,7 +190,7 @@ const Validation: React.FC = () => {
                 <div className="flex gap-4 p-2">
                   <button
                     type="submit"
-                    className="bg-primary shadow-4 hover:bg-opacity-90 text-white font-bold py-1 px-4 uppercase  rounded focus:outline-none focus:shadow-outline"
+                    className="bg-meta-5 shadow-4 hover:bg-opacity-90 text-white font-bold py-1 px-4 uppercase  rounded-sm focus:outline-none focus:shadow-outline"
                     onClick={handleSubmit}
                     disabled={isLoading}
                   >

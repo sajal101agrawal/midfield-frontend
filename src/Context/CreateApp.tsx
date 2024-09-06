@@ -15,9 +15,23 @@ interface data {
   api_key: string;
 }
 
+interface validatorsObj {
+  validator_codename: number;
+  parameters: any;
+}
+
+interface appDetails {
+  apikey: string;
+  app_name: string;
+  user_name: string;
+  unique_id: string;
+  associated_validators: any[];
+}
+
 interface CreateAppContextValue {
   APIData: data | null;
   appList: any[];
+  appDetails: appDetails | null;
   error: string | null;
   setError: (error: string | null) => void;
   isLoading: boolean;
@@ -29,11 +43,13 @@ interface CreateAppContextValue {
     setisModelOpen: (isModelOpen: boolean) => void,
   ) => Promise<void>;
   getAllApps: (google_id: string, email: string) => Promise<void>;
-  updateAppName: (
+  getAppDetails: (unique_id: string) => Promise<void>;
+  updateAppDetails: (
+    id: string,
     google_id: string,
     email: string,
-    app_name: string,
-    new_name: string,
+    apikey: string,
+    validators: validatorsObj[],
   ) => Promise<void>;
   deleteApp: (
     google_id: string,
@@ -52,6 +68,7 @@ interface CreateAppProviderProps {
 
 function CreateAppProvider({ children }: CreateAppProviderProps) {
   const [APIData, setAPIData] = useState<data | null>(null);
+  const [appDetails, setAppDetails] = useState<appDetails | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [appList, setAppList] = useState<any[]>([]);
@@ -114,22 +131,46 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
     }
   }, []);
 
-  const updateAppName = useCallback(async function updateAppName(
+  const getAppDetails = useCallback(async function getAllApps(
+    unique_id: string,
+  ) {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const res = await axios.post(
+        'https://api.midfield.ai/api/app/app_details/',
+        { unique_id },
+      );
+      setAppDetails(res.data.data);
+    } catch (error: any) {
+      setError(
+        error.response?.data?.error || 'Failed to load App Details, Try Again!',
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const updateAppDetails = useCallback(async function updateAppName(
+    id: string,
     google_id: string,
     email: string,
-    app_name: string,
-    new_name: string,
+    apikey: string,
+    validators: validatorsObj[],
   ) {
     try {
       const res = await axios.post(
         'https://api.midfield.ai/api/app/update_apps/',
-        { google_id, email, app_name, new_name },
+        { google_id, email, apikey, validators },
       );
       console.log(res.data);
-      getAllApps(google_id, email);
-    } catch (error) {
+      getAppDetails(id);
+    } catch (error: any) {
       console.log(error);
-      // setError('Failed to Update App Name, Try Again!');
+      throw new Error(
+        error.response?.data?.error ||
+          'Failed to Update App Details, Try Again!',
+      );
     }
   }, []);
 
@@ -159,12 +200,14 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
       value={{
         createApp,
         APIData,
+        appDetails,
         error,
         isLoading,
         setError,
         getAllApps,
+        getAppDetails,
         appList,
-        updateAppName,
+        updateAppDetails,
         deleteApp,
       }}
     >

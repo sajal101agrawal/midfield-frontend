@@ -22,7 +22,7 @@ const Apps: React.FC = () => {
             <h1 className="text-2xl font-bold  text-black">Your Apps</h1>
             <Link
               to="create_new_app"
-              className={`text-white bg-boxdark border shadow-md  border-graydark  transition-colors px-2 py-1 rounded-md `}
+              className={`text-white bg-meta-5 hover:bg-opacity-90 shadow-md  transition-colors px-2 py-1 rounded-sm font-semibold `}
             >
               + Create new app
             </Link>
