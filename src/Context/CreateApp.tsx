@@ -7,7 +7,7 @@ import {
   useEffect,
 } from 'react';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface data {
   app_name: string;
@@ -50,6 +50,7 @@ interface CreateAppContextValue {
     email: string,
     apikey: string,
     validators: validatorsObj[],
+    del_validators: validatorsObj[],
   ) => Promise<void>;
   deleteApp: (
     google_id: string,
@@ -73,6 +74,7 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [appList, setAppList] = useState<any[]>([]);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setError(null);
@@ -157,14 +159,16 @@ function CreateAppProvider({ children }: CreateAppProviderProps) {
     email: string,
     apikey: string,
     validators: validatorsObj[],
+    del_validators: validatorsObj[],
   ) {
     try {
       const res = await axios.post(
         'https://api.midfield.ai/api/app/update_apps/',
-        { google_id, email, apikey, validators },
+        { google_id, email, apikey, validators, del_validators },
       );
       console.log(res.data);
       getAppDetails(id);
+      navigate('/dashboard/apps');
     } catch (error: any) {
       console.log(error);
       throw new Error(

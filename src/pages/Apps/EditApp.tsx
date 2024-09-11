@@ -12,6 +12,7 @@ const EditApp: React.FC = function () {
   const { getAppDetails, appDetails, isLoading, error, updateAppDetails } =
     useCreateApp();
   const [appName, setAppName] = useState(appDetails?.app_name || '');
+  const [deletedValidators, setDeletedValidators] = useState<any[]>([]);
   const [associated_validators, setAssociated_Validators] = useState(
     appDetails?.associated_validators || [],
   );
@@ -43,14 +44,26 @@ const EditApp: React.FC = function () {
 
   const removeValidator = (index: number) => {
     const newValidators = [...associated_validators];
-    newValidators.splice(index, 1);
+    const delValidators = newValidators.splice(index, 1);
+    setDeletedValidators((deletedValidators) => [
+      ...deletedValidators,
+      ...delValidators,
+    ]);
     setAssociated_Validators(newValidators);
   };
 
   const handleUpdate = async () => {
     setIsUpdateLoading(true);
+    setIsUpdateError(null);
     try {
       const argValidators = associated_validators.map((v) => {
+        return {
+          validator_codename: v.validator.codename,
+          parameters: v.parameters,
+        };
+      });
+
+      const delValidators = deletedValidators.map((v) => {
         return {
           validator_codename: v.validator.codename,
           parameters: v.parameters,
@@ -64,7 +77,10 @@ const EditApp: React.FC = function () {
         userData?.email,
         appDetails?.apikey,
         argValidators,
+        delValidators,
       );
+
+      setDeletedValidators([]);
     } catch (error: any) {
       setIsUpdateError(error.message);
     } finally {

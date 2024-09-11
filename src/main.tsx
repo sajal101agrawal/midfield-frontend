@@ -10,7 +10,6 @@ import { UserProvider } from './Context/UserContext';
 import { CreateAppProvider } from './Context/CreateApp';
 import { ValidatorsProvider } from './Context/ValidatorsContext';
 import { DashboardProvider } from './Context/DashboardContext';
-import { AssociateValidatorProvider } from './Context/AssociateValidatorContext';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -19,9 +18,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <DashboardProvider>
           <CreateAppProvider>
             <ValidatorsProvider>
-              <AssociateValidatorProvider>
-                <App />
-              </AssociateValidatorProvider>
+              <App />
             </ValidatorsProvider>
           </CreateAppProvider>
         </DashboardProvider>

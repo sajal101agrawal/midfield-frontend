@@ -31,27 +31,25 @@ interface UserProviderProps {
   children: ReactNode;
 }
 
-// {
-//   //@ts-ignore
-//   aud: '238378436733-q1sbs6acge2t14e6u5imnct6e79m3vq3.apps.googleusercontent.com',
-//   at_hash: '1AqID9_31XxkVCRs6qfCDg',
-//   azp: '238378436733-q1sbs6acge2t14e6u5imnct6e79m3vq3.apps.googleusercontent.com',
-//   email: 'vkj03360@gmail.com',
-//   email_verified: true,
-//   exp: 1725249610,
-//   family_name: 'John',
-//   given_name: 'Vk',
-//   iat: 1725246010,
-//   name: 'Vk John',
-//   iss: 'https://accounts.google.com',
-//   picture:
-//     'https://lh3.googleusercontent.com/a/ACg8ocJ4Ay5oT9OgP8R4cyiJnA___afJPx4dDklgEKyLfEiu2IODtg=s96-c',
-//   sub: '109968820866080530834',
-// }
-
 function UserProvider({ children }: UserProviderProps) {
-  const [userData, setUserData] = useState<User | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userData, setUserData] = useState<User | null>({
+    //@ts-ignore
+    aud: '238378436733-q1sbs6acge2t14e6u5imnct6e79m3vq3.apps.googleusercontent.com',
+    at_hash: '1AqID9_31XxkVCRs6qfCDg',
+    azp: '238378436733-q1sbs6acge2t14e6u5imnct6e79m3vq3.apps.googleusercontent.com',
+    email: 'vkj03360@gmail.com',
+    email_verified: true,
+    exp: 1725249610,
+    family_name: 'John',
+    given_name: 'Vk',
+    iat: 1725246010,
+    name: 'Vk John',
+    iss: 'https://accounts.google.com',
+    picture:
+      'https://lh3.googleusercontent.com/a/ACg8ocJ4Ay5oT9OgP8R4cyiJnA___afJPx4dDklgEKyLfEiu2IODtg=s96-c',
+    sub: '109968820866080530834',
+  });
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
